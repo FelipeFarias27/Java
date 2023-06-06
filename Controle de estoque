@@ -1,0 +1,38 @@
+```java
+import java.util.HashMap;
+
+public class ControleEstoque {
+    private HashMap<String, Integer> estoque;
+
+    public ControleEstoque() {
+        estoque = new HashMap<String, Integer>();
+    }
+
+    public void adicionarItem(String item, int quantidade) {
+        if (estoque.containsKey(item)) {
+            estoque.put(item, estoque.get(item) + quantidade);
+        } else {
+            estoque.put(item, quantidade);
+        }
+    }
+
+    public void removerItem(String item, int quantidade) {
+        if (estoque.containsKey(item)) {
+            int novaQuantidade = estoque.get(item) - quantidade;
+            if (novaQuantidade > 0) {
+                estoque.put(item, novaQuantidade);
+            } else {
+                estoque.remove(item);
+            }
+        }
+    }
+
+    public int verificarQuantidade(String item) {
+        if (estoque.containsKey(item)) {
+            return estoque.get(item);
+        } else {
+            return 0;
+        }
+    }
+}
+```
